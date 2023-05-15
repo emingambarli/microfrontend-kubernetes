@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    enviroment {
-        VERSION = "${env.BUILD_ID}"
-    }
-
     stages {
         stage("Build Docker images for web-app-blogs") {
             when { changeset "web-app-blogs/*"}
