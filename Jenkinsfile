@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage("Build Docker images for web-app-blogs") {
-           // when { changeset "web-app-blogs/*"}
+            when { changeset "web-app-blogs/*"}
                 steps {
                     dir('web-app-blogs'){
                         script{
@@ -29,7 +29,7 @@ pipeline {
         }
 
         stage("Build Docker images for web-app-header") {
-            //when { changeset "web-app-header/*"}
+            when { changeset "web-app-header/*"}
                 steps {
                     dir('web-app-header'){
                         script{
@@ -53,7 +53,7 @@ pipeline {
         }
 
         stage("Build Docker images for web-container") {
-            //when { changeset "web-container/*"}
+            when { changeset "web-container/*"}
                 steps {
                     dir('web-container'){
                         script{
