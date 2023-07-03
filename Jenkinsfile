@@ -48,7 +48,7 @@ pipeline {
     
                                 sudo docker push emn503/web-app-header:${BUILD_ID}
 
-                                sudo docker push wemn503/eb-app-header:latest
+                                sudo docker push emn503/web-app-header:latest
     
                                 sudo docker rmi emn503/web-app-header:${BUILD_ID}
                                 '''
