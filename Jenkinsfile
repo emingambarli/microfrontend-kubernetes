@@ -13,7 +13,9 @@ pipeline {
                                 echo ${BUILD_ID}
 
                                 sudo docker build -t $nexus_ip:8503/web-app-blogs:${BUILD_ID} .
-    
+
+                                sudo docker build -t $nexus_ip:8503/web-app-blogs:latest .
+
                                 sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
     
                                 sudo docker push $nexus_ip:8503/web-app-blogs:${BUILD_ID}
@@ -37,6 +39,8 @@ pipeline {
                             withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
                                 sudo docker build -t $nexus_ip:8503/web-app-header:${BUILD_ID} .
+                                
+                                sudo docker build -t $nexus_ip:8503/web-app-header:latest .
     
                                 sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
     
@@ -61,6 +65,8 @@ pipeline {
                             withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
                                 sudo docker build -t $nexus_ip:8503/web-container:${BUILD_ID} .
+
+                                sudo docker build -t $nexus_ip:8503/web-container:latest .
     
                                 sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
     
