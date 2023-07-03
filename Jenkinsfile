@@ -20,6 +20,8 @@ pipeline {
     
                                 sudo docker push $nexus_ip:8503/web-app-blogs:${BUILD_ID}
 
+                                sudo docker push $nexus_ip:8503/web-app-blogs:latest
+
                                 sudo docker rmi $nexus_ip:8503/web-app-blogs:${BUILD_ID}
                                 '''
                                 }
@@ -45,6 +47,8 @@ pipeline {
                                 sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
     
                                 sudo docker push $nexus_ip:8503/web-app-header:${BUILD_ID}
+
+                                sudo docker push $nexus_ip:8503/web-app-header:latest
     
                                 sudo docker rmi $nexus_ip:8503/web-app-header:${BUILD_ID}
                                 '''
@@ -71,6 +75,8 @@ pipeline {
                                 sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
     
                                 sudo docker push $nexus_ip:8503/web-container:${BUILD_ID}
+
+                                sudo docker push $nexus_ip:8503/web-container:latest
     
                                 sudo docker rmi $nexus_ip:8503/web-container:${BUILD_ID}
                                 '''
