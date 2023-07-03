@@ -12,17 +12,17 @@ pipeline {
                                 sh '''
                                 echo ${BUILD_ID}
 
-                                sudo docker build -t $nexus_ip:8503/web-app-blogs:${BUILD_ID} .
+                                sudo docker build -t emn503/web-app-blogs:${BUILD_ID} .
 
-                                sudo docker build -t $nexus_ip:8503/web-app-blogs:latest .
+                                sudo docker build -t emn503/web-app-blogs:latest .
 
-                                sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
+                                sudo docker login -u $nexususer -p $nexuspass
     
-                                sudo docker push $nexus_ip:8503/web-app-blogs:${BUILD_ID}
+                                sudo docker push emn503/web-app-blogs:${BUILD_ID}
 
-                                sudo docker push $nexus_ip:8503/web-app-blogs:latest
+                                sudo docker push emn503/web-app-blogs:latest
 
-                                sudo docker rmi $nexus_ip:8503/web-app-blogs:${BUILD_ID}
+                                sudo docker rmi emn503/web-app-blogs:${BUILD_ID}
                                 '''
                                 }
                             }
@@ -40,17 +40,17 @@ pipeline {
                         withCredentials([string(credentialsId: '0f1b5bc0-aed9-4215-8fe8-052c12ee790f', variable: 'nexus_ip')]) { 
                             withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
-                                sudo docker build -t $nexus_ip:8503/web-app-header:${BUILD_ID} .
+                                sudo docker build -t emn503/web-app-header:${BUILD_ID} .
                                 
-                                sudo docker build -t $nexus_ip:8503/web-app-header:latest .
+                                sudo docker build -t emn503/web-app-header:latest .
     
-                                sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
+                                sudo docker login -u $nexususer -p $nexuspass
     
-                                sudo docker push $nexus_ip:8503/web-app-header:${BUILD_ID}
+                                sudo docker push emn503/web-app-header:${BUILD_ID}
 
-                                sudo docker push $nexus_ip:8503/web-app-header:latest
+                                sudo docker push wemn503/eb-app-header:latest
     
-                                sudo docker rmi $nexus_ip:8503/web-app-header:${BUILD_ID}
+                                sudo docker rmi emn503/web-app-header:${BUILD_ID}
                                 '''
                                 }
                             }
@@ -68,17 +68,17 @@ pipeline {
                         withCredentials([string(credentialsId: '0f1b5bc0-aed9-4215-8fe8-052c12ee790f', variable: 'nexus_ip')]) { 
                             withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
-                                sudo docker build -t $nexus_ip:8503/web-container:${BUILD_ID} .
+                                sudo docker build -t emn503/web-container:${BUILD_ID} .
 
-                                sudo docker build -t $nexus_ip:8503/web-container:latest .
+                                sudo docker build -t emn503/web-container:latest .
     
-                                sudo docker login -u $nexususer -p $nexuspass $nexus_ip:8503
+                                sudo docker login -u $nexususer -p $nexuspass
     
-                                sudo docker push $nexus_ip:8503/web-container:${BUILD_ID}
+                                sudo docker push emn503/web-container:${BUILD_ID}
 
-                                sudo docker push $nexus_ip:8503/web-container:latest
+                                sudo docker push emn503/web-container:latest
     
-                                sudo docker rmi $nexus_ip:8503/web-container:${BUILD_ID}
+                                sudo docker rmi emn503/web-container:${BUILD_ID}
                                 '''
                                 }
                             }
