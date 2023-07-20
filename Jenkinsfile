@@ -7,8 +7,6 @@ pipeline {
                 steps {
                     dir('web-app-blogs'){
                         script{
-                        withCredentials([string(credentialsId: '0f1b5bc0-aed9-4215-8fe8-052c12ee790f', variable: 'nexus_ip')]) { 
-                            withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
                                 echo ${BUILD_ID}
 
@@ -24,8 +22,6 @@ pipeline {
 
                                 sudo docker rmi emn503/web-app-blogs:${BUILD_ID}
                                 '''
-                                }
-                            }
                         }
                     }
                     
@@ -37,8 +33,6 @@ pipeline {
                 steps {
                     dir('web-app-header'){
                         script{
-                        withCredentials([string(credentialsId: '0f1b5bc0-aed9-4215-8fe8-052c12ee790f', variable: 'nexus_ip')]) { 
-                            withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
                                 sudo docker build -t emn503/web-app-header:${BUILD_ID} .
                                 
@@ -52,8 +46,6 @@ pipeline {
     
                                 sudo docker rmi emn503/web-app-header:${BUILD_ID}
                                 '''
-                                }
-                            }
                         }
                     }
                     
@@ -65,8 +57,6 @@ pipeline {
                 steps {
                     dir('web-container'){
                         script{
-                        withCredentials([string(credentialsId: '0f1b5bc0-aed9-4215-8fe8-052c12ee790f', variable: 'nexus_ip')]) { 
-                            withCredentials([usernamePassword(credentialsId: '69aab20e-345b-4e1e-a96f-17a3a5d3e2a6', passwordVariable: 'nexuspass', usernameVariable: 'nexususer')]) {
                                 sh '''
                                 sudo docker build -t emn503/web-container:${BUILD_ID} .
 
@@ -80,8 +70,8 @@ pipeline {
     
                                 sudo docker rmi emn503/web-container:${BUILD_ID}
                                 '''
-                                }
-                            }
+                                
+                            
                         }
                     }
                     
