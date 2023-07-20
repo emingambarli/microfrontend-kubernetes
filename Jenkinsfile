@@ -53,7 +53,7 @@ pipeline {
         }
 
         stage("Build Docker images for web-container") {
-            when { changeset "web-container/*"}
+            //when { changeset "web-container/*"}
                 steps {
                     dir('web-container'){
                         script{
