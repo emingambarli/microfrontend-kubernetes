@@ -88,5 +88,13 @@ pipeline {
                 }
         }
 
+        stage("Deploy to Kubernetes:") {
+            when { changeset "web-app-blogs/*" } {
+                script{
+                    
+                }
+            }
+        }
+
     }
 }
