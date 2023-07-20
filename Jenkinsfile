@@ -31,7 +31,7 @@ pipeline {
         stage("Build Docker images for web-app-header") {
             when { changeset "web-app-header/*"}
                 steps {
-                    dir('web-app-header'){
+                    //dir('web-app-header'){
                         script{
                                 sh '''
                                 sudo docker build -t emn503/web-app-header:${BUILD_ID} .
@@ -47,7 +47,7 @@ pipeline {
                                 sudo docker rmi emn503/web-app-header:${BUILD_ID}
                                 '''
                         }
-                    }
+                    //}
                     
                 }
         }
