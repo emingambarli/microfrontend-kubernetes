@@ -7,10 +7,6 @@ spec:
   selector:
     matchLabels:
       app: container
-  rollingUpdate:
-    maxSurge: 25%
-    maxUnavailable: 25%
-  type: RollingUpdate
   template:
     metadata:
       labels:
@@ -21,7 +17,7 @@ spec:
           image: emn503/web-container:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3000
       restartPolicy: Always
 
 ---
