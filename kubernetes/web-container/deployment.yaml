@@ -19,13 +19,12 @@ spec:
     metadata:
       labels:
         app:  container
-  spec:
-    containers:
-    - name:  container
-      image:  emn503/web-container:latest
-      ports:
-      - containerPort: 3000
-      restartPolicy: Always
+  containers:
+  - name:  container
+    image:  emn503/web-container:latest
+    ports:
+    - containerPort: 3000
+    restartPolicy: Always
 
 ---
 apiVersion: v1

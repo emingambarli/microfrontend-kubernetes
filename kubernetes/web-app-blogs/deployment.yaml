@@ -19,13 +19,12 @@ spec:
     metadata:
       labels:
         app:  blogs
-  spec:
-    containers:
-    - name:  blogs
-      image:  emn503/web-app-blogs:latest
-      ports:
-      - containerPort: 3000
-      restartPolicy: Always
+  containers:
+  - name:  blogs
+    image:  emn503/web-app-blogs:latest
+    ports:
+    - containerPort: 3000
+    restartPolicy: Always
 
 ---
 apiVersion: v1
