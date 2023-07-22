@@ -17,7 +17,7 @@ spec:
           image: emn503/web-header:latest
           imagePullPolicy: Always
           ports:
-            - headerPort: 3001
+            - containerPort: 3001
       restartPolicy: Always
 
 ---
