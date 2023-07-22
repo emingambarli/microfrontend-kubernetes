@@ -27,12 +27,5 @@ metadata:
   name: container-service
   namespace: default
 spec:
-  selector:
-    app: container
-  type: NodePort
-  ports:
-  - name: container
-    protocol: TCP
-    port: 3050
-    targetPort: 3000
-    nodePort: 31000
+  type: ExternalName
+  externalName: container.microfront.com
