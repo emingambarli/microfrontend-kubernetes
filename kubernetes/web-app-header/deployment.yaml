@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: header
-          image: emn503/web-header:latest
+          image: emn503/web-app-header:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3001
