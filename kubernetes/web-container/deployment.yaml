@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  container
+  namespace: default
+  labels:
+    app:  container
+spec:
+  selector:
+    matchLabels:
+      app: container
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  container
+  spec:
+    containers:
+    - name:  container
+      image:  emn503/web-container:latest
+      ports:
+      - containerPort: 3000
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: container-service
+  namespace: default
+spec:
+  selector:
+    app: container
+  type: NodePort
+  ports:
+  - name: container
+    protocol: TCP
+    port: 3050
+    targetPort: 3000
+    nodePort: 31000

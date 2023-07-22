@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  header
+  namespace: default
+  labels:
+    app:  header
+spec:
+  selector:
+    matchLabels:
+      app: header
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  header
+  spec:
+    containers:
+    - name:  header
+      image:  emn503/web-app-header:latest
+      ports:
+      - containerPort: 3000
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: header-service
+  namespace: default
+spec:
+  selector:
+    app: header
+  type: NodePort
+  ports:
+  - name: header
+    protocol: TCP
+    port: 3051
+    targetPort: 3001
+    nodePort: 31001
